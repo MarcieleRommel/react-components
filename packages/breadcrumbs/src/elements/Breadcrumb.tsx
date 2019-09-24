@@ -5,7 +5,7 @@
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-import React, { Component, Children, cloneElement } from 'react';
+import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { hasType } from '@zendeskgarden/react-utilities';
 import { useBreadcrumb } from '@zendeskgarden/container-breadcrumb';
@@ -18,16 +18,13 @@ import Item from '../views/Item';
  * High-level abstraction for basic Breadcrumb implementations. Accepts all
  * `<ol>` props.
  */
-export default class Breadcrumb extends Component {
-  static propTypes = {
-    children: PropTypes.any
-  };
 
-  renderPage = (page, pageProps, itemProps) => {
+const Breadcrumb = ({ children, ...breadcrumbProps }: any) => {
+  const renderPage = (page: any, pageProps: any, itemProps: any) => {
     return <Item {...itemProps}>{itemProps.current ? cloneElement(page, pageProps) : page}</Item>;
   };
 
-  renderItems = (items, getCurrentPageProps) => {
+  const renderItems = (items: any, getCurrentPageProps: any) => {
     const total = Children.count(items);
 
     return Children.map(items, (item, index) => {
@@ -38,19 +35,22 @@ export default class Breadcrumb extends Component {
 
       return hasType(item, Item)
         ? cloneElement(item, itemProps)
-        : this.renderPage(item, getCurrentPageProps(), itemProps);
+        : renderPage(item, getCurrentPageProps(), itemProps);
     });
   };
 
-  render() {
-    const { children, ...breadcrumbProps } = this.props;
-    const { getContainerProps, getCurrentPageProps } = useBreadcrumb();
+  const { getContainerProps, getCurrentPageProps } = useBreadcrumb();
 
-    return (
-      /* role not needed as `BreadcrumbView` is a navigation landmark. */
-      <BreadcrumbView {...getContainerProps({ role: null })}>
-        <List {...breadcrumbProps}>{this.renderItems(children, getCurrentPageProps)}</List>
-      </BreadcrumbView>
-    );
-  }
-}
+  return (
+    /* role not needed as `BreadcrumbView` is a navigation landmark. */
+    <BreadcrumbView {...getContainerProps({ role: null })}>
+      <List {...breadcrumbProps}>{renderItems(children, getCurrentPageProps)}</List>
+    </BreadcrumbView>
+  );
+};
+
+Breadcrumb.propTypes = {
+  children: PropTypes.node
+};
+
+export default Breadcrumb;

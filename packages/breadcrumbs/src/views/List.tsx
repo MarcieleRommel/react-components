@@ -5,31 +5,26 @@
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import classNames from 'classnames';
-import { retrieveTheme } from '@zendeskgarden/react-theming';
 import BreadcrumbStyles from '@zendeskgarden/css-breadcrumbs';
+import { retrieveTheme, isRtl } from '@zendeskgarden/react-theming';
 
-const COMPONENT_ID = 'breadcrumbs.item';
+const COMPONENT_ID = 'breadcrumbs.list';
 
 /**
- * Accepts all `<li>` props
+ * Accepts all `<ol>` props
  */
-const Item = styled.li.attrs(props => ({
+const List = styled.ol.attrs(props => ({
   'data-garden-id': COMPONENT_ID,
   'data-garden-version': PACKAGE_VERSION,
-  className: classNames(BreadcrumbStyles['c-breadcrumb__item'], {
-    // State
-    [BreadcrumbStyles['is-current']]: props.current
+  className: classNames(BreadcrumbStyles['c-breadcrumb'], {
+    // RTL
+    [BreadcrumbStyles['is-rtl']]: isRtl(props)
   })
 }))`
   ${props => retrieveTheme(COMPONENT_ID, props)};
 `;
 
-Item.propTypes = { current: PropTypes.bool };
-
-Item.hasType = () => Item;
-
 /** @component */
-export default Item;
+export default List as React.FunctionComponent;

@@ -195,3 +195,7 @@ declare module '@zendeskgarden/css-variables' {
 declare module '@zendeskgarden/css-menus';
 declare module '@zendeskgarden/css-forms';
 declare module '@zendeskgarden/css-arrows';
+
+declare module '@zendeskgarden/react-utilities';
+declare module '@zendeskgarden/container-breadcrumb';
+declare module '@zendeskgarden/css-breadcrumbs';
