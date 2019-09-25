@@ -13,10 +13,14 @@ import BreadcrumbStyles from '@zendeskgarden/css-breadcrumbs';
 
 const COMPONENT_ID = 'breadcrumbs.item';
 
+interface IItemProps {
+  current?: boolean;
+}
+
 /**
  * Accepts all `<li>` props
  */
-const Item = styled.li.attrs(props => ({
+const Item: any = styled.li.attrs((props: IItemProps) => ({
   'data-garden-id': COMPONENT_ID,
   'data-garden-version': PACKAGE_VERSION,
   className: classNames(BreadcrumbStyles['c-breadcrumb__item'], {
@@ -32,4 +36,4 @@ Item.propTypes = { current: PropTypes.bool };
 Item.hasType = () => Item;
 
 /** @component */
-export default Item;
+export default Item as React.FunctionComponent<IItemProps>;

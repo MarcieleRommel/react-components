@@ -18,11 +18,11 @@ import Item from '../views/Item';
  * High-level abstraction for basic Breadcrumb implementations. Accepts all
  * `<ol>` props.
  */
-const renderPage = (page, pageProps, itemProps) => {
+const renderPage = (page: any, pageProps: any, itemProps: any) => {
   return <Item {...itemProps}>{itemProps.current ? cloneElement(page, pageProps) : page}</Item>;
 };
 
-const renderItems = (items, getCurrentPageProps) => {
+const renderItems = (items: any, getCurrentPageProps: any) => {
   const total = Children.count(items);
 
   return Children.map(items, (item, index) => {
@@ -38,7 +38,7 @@ const renderItems = (items, getCurrentPageProps) => {
 };
 
 /** @component */
-export default function Breadcrumb({ children, ...breadcrumbProps }) {
+export default function Breadcrumb({ children, ...breadcrumbProps }: any) {
   const { getContainerProps, getCurrentPageProps } = useBreadcrumb();
 
   return (

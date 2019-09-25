@@ -44,5 +44,5 @@
     "access": "public"
   },
   "zendeskgarden:library": "GardenBreadcrumbs",
-  "zendeskgarden:src": "src/index.js"
+  "zendeskgarden:src": "src/index.ts"
 }

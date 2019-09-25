@@ -11,6 +11,7 @@ declare const PACKAGE_VERSION: string;
 /** React packages */
 declare module '@zendeskgarden/container-selection';
 declare module '@zendeskgarden/container-buttongroup';
+declare module '@zendeskgarden/container-breadcrumb';
 declare module '@zendeskgarden/container-utilities' {
   interface IKeyCodes {
     ALT: 18;
@@ -55,3 +56,4 @@ declare module '*.md';
 declare module '@zendeskgarden/css-menus';
 declare module '@zendeskgarden/css-forms';
 declare module '@zendeskgarden/css-arrows';
+declare module '@zendeskgarden/css-breadcrumbs';

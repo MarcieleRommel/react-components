@@ -27,4 +27,4 @@ const List = styled.ol.attrs(props => ({
 `;
 
 /** @component */
-export default List;
+export default List as React.FunctionComponent;
