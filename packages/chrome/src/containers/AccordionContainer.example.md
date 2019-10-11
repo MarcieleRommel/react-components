@@ -1,4 +1,18 @@
-```jsx
+## DEPRECATION WARNING
+
+This component has been deprecated in favor of the API provided in the
+[@zendeskgarden/container-accordion](https://www.npmjs.com/package/@zendeskgarden/container-accordion)
+package.
+
+This component will be removed in a future major release.
+
+```jsx static
+const {
+  zdSpacing,
+  zdSpacingSm,
+  zdSpacingXs,
+  zdColorGrey300
+} = require('@zendeskgarden/css-variables');
 const DownIcon = require('@zendeskgarden/svg-icons/src/16/chevron-down-fill.svg').default;
 
 const UpIcon = styled(DownIcon)`

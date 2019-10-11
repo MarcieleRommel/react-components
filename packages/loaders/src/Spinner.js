@@ -78,7 +78,7 @@ export default function Spinner({
       {...other}
     >
       <SpinnerCircle
-        strokeDasharray={`${dasharrayValue} 250`}
+        strokeDasharray={dasharrayValue}
         strokeWidth={strokeWidthValue}
         transform={`rotate(${rotationValue}, ${WIDTH / 2}, ${HEIGHT / 2})`}
       />

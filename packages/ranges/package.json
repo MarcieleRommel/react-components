@@ -8,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/zendeskgarden/react-components/issues"
   },
-  "version": "6.4.4",
+  "version": "6.8.0",
   "main": "./dist/index.js",
   "files": [
     "dist"
@@ -19,8 +19,8 @@
     "start": "../../utils/scripts/start.sh"
   },
   "dependencies": {
-    "@zendeskgarden/react-selection": "^6.2.0",
-    "@zendeskgarden/react-utilities": "^6.2.0",
+    "@zendeskgarden/react-selection": "^6.5.0",
+    "@zendeskgarden/react-utilities": "^6.7.1",
     "classnames": "^2.2.5",
     "lodash.debounce": "^4.0.8"
   },
@@ -32,8 +32,8 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "@zendeskgarden/css-forms": "7.0.13",
-    "@zendeskgarden/react-theming": "^6.2.0"
+    "@zendeskgarden/css-forms": "7.0.14",
+    "@zendeskgarden/react-theming": "^6.5.0"
   },
   "keywords": [
     "components",
@@ -45,5 +45,6 @@
     "access": "public"
   },
   "zendeskgarden:library": "GardenRanges",
+  "zendeskgarden:max_size": "12.5 kB",
   "zendeskgarden:src": "src/index.js"
 }

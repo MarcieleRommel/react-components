@@ -52,22 +52,19 @@ describe('Spinner', () => {
         jest.runOnlyPendingTimers();
       });
 
-      expect(container.firstChild.firstChild).toMatchInlineSnapshot(
-        `
-<circle
-  class=""
-  cx="40"
-  cy="40"
-  fill="none"
-  r="34"
-  stroke="currentColor"
-  stroke-dasharray="0 250"
-  stroke-linecap="round"
-  stroke-width="6"
-  transform="rotate(-90, 40, 40)"
-/>
-`
-      );
+      expect(container.firstChild.firstChild).toMatchInlineSnapshot(`
+        <circle
+          class=""
+          cx="40"
+          cy="40"
+          fill="none"
+          r="34"
+          stroke="currentColor"
+          stroke-dasharray="undefined 250"
+          stroke-linecap="round"
+          transform="rotate(-90, 40, 40)"
+        />
+      `);
 
       act(() => {
         // move time forward 1 second
@@ -75,22 +72,19 @@ describe('Spinner', () => {
         requestAnimationFrame.mock.calls[0][0]();
       });
 
-      expect(container.firstChild.firstChild).toMatchInlineSnapshot(
-        `
-<circle
-  class="styled-elements__SpinnerCircle-sc-19dhio6-4 glGYSu"
-  cx="40"
-  cy="40"
-  fill="none"
-  r="34"
-  stroke="currentColor"
-  stroke-dasharray="33.04 250"
-  stroke-linecap="round"
-  stroke-width="5"
-  transform="rotate(186.6, 40, 40)"
-/>
-`
-      );
+      expect(container.firstChild.firstChild).toMatchInlineSnapshot(`
+        <circle
+          class="styled-elements__SpinnerCircle-sc-19dhio6-4 glGYSu"
+          cx="40"
+          cy="40"
+          fill="none"
+          r="34"
+          stroke="currentColor"
+          stroke-dasharray="undefined 250"
+          stroke-linecap="round"
+          transform="rotate(186.6, 40, 40)"
+        />
+      `);
     });
   });
 });

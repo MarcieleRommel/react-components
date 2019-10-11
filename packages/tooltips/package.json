@@ -8,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/zendeskgarden/react-components/issues"
   },
-  "version": "6.4.4",
+  "version": "6.7.1",
   "main": "./dist/index.js",
   "files": [
     "dist"
@@ -19,9 +19,11 @@
     "start": "../../utils/scripts/start.sh"
   },
   "dependencies": {
-    "@zendeskgarden/react-selection": "^6.2.0",
+    "@zendeskgarden/container-tooltip": "^0.2.4",
+    "@zendeskgarden/container-utilities": "^0.3.0",
+    "@zendeskgarden/react-selection": "^6.5.0",
     "classnames": "^2.2.5",
-    "react-popper": "0.8.2"
+    "react-popper": "^0.10.4"
   },
   "peerDependencies": {
     "@zendeskgarden/react-theming": "^6.0.0",
@@ -32,8 +34,8 @@
   },
   "devDependencies": {
     "@zendeskgarden/css-arrows": "3.1.1",
-    "@zendeskgarden/css-tooltips": "4.1.20",
-    "@zendeskgarden/react-theming": "^6.2.0"
+    "@zendeskgarden/css-tooltips": "4.1.21",
+    "@zendeskgarden/react-theming": "^6.5.0"
   },
   "keywords": [
     "components",
@@ -45,5 +47,6 @@
     "access": "public"
   },
   "zendeskgarden:library": "GardenTooltips",
+  "zendeskgarden:max_size": "21.5 kB",
   "zendeskgarden:src": "src/index.js"
 }

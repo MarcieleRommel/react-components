@@ -5,7 +5,7 @@
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-import React, { Children, cloneElement } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { hasType } from '@zendeskgarden/react-utilities';
 import { useBreadcrumb } from '@zendeskgarden/container-breadcrumb';
@@ -18,35 +18,41 @@ import Item from '../views/Item';
  * High-level abstraction for basic Breadcrumb implementations. Accepts all
  * `<ol>` props.
  */
-const renderPage = (page, pageProps, itemProps) => {
-  return <Item {...itemProps}>{itemProps.current ? cloneElement(page, pageProps) : page}</Item>;
-};
+export default class Breadcrumb extends Component {
+  static propTypes = {
+    children: PropTypes.any
+  };
 
-const renderItems = (items, getCurrentPageProps) => {
-  const total = Children.count(items);
+  renderPage = (page, pageProps, itemProps) => {
+    return <Item {...itemProps}>{itemProps.current ? cloneElement(page, pageProps) : page}</Item>;
+  };
 
-  return Children.map(items, (item, index) => {
-    const itemProps = {
-      current: index === total - 1,
-      key: index
-    };
+  renderItems = (items, getCurrentPageProps) => {
+    const total = Children.count(items);
 
-    return hasType(item, Item)
-      ? cloneElement(item, itemProps)
-      : renderPage(item, getCurrentPageProps(), itemProps);
-  });
-};
+    return Children.map(items, (item, index) => {
+      const itemProps = {
+        current: index === total - 1,
+        key: index
+      };
 
-/** @component */
-export default function Breadcrumb({ children, ...breadcrumbProps }) {
-  const { getContainerProps, getCurrentPageProps } = useBreadcrumb();
+      return hasType(item, Item)
+        ? cloneElement(item, itemProps)
+        : this.renderPage(item, getCurrentPageProps(), itemProps);
+    });
+  };
 
-  return (
-    /* role not needed as `BreadcrumbView` is a navigation landmark. */
-    <BreadcrumbView {...getContainerProps({ role: null })}>
-      <List {...breadcrumbProps}>{renderItems(children, getCurrentPageProps)}</List>
-    </BreadcrumbView>
-  );
+  render() {
+    const { children, ...breadcrumbProps } = this.props;
+    const { getContainerProps, getCurrentPageProps } = useBreadcrumb();
+
+    return (
+      /* role not needed as `BreadcrumbView` is a navigation landmark. */
+      <BreadcrumbView {...getContainerProps({ role: null })}>
+        <List {...breadcrumbProps}>{this.renderItems(children, getCurrentPageProps)}</List>
+      </BreadcrumbView>
+    );
+  }
 }
 
 Breadcrumb.propTypes = {
